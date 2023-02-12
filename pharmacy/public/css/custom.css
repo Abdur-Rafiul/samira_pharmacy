@@ -1,0 +1,267 @@
+.logo{
+
+    width: 60px;
+    height: auto;
+    margin-left: 20px;
+
+}
+
+.delivery-logo{
+
+    width: 60px;
+    height: auto;
+    margin-left: 45px;
+
+}
+
+.search-btn{
+
+    margin-top: 60px!important;
+    margin-left: 30px!important;
+
+}
+
+.form-outline .form-control {
+
+    width: 770px;
+    padding: 10px!important;
+    margin-left: 100px!important;
+}
+
+.cart-logo{
+
+    width: 30px;
+
+}
+
+.user-logo{
+
+    width: 30px;
+
+
+}
+
+.slider-img{
+
+    width: 300px;
+    height: 500px;
+
+
+}
+
+.sidebar-logo{
+
+    width: 30px!important;
+
+}
+
+body{
+
+    box-sizing: border-box;
+
+
+}
+
+
+
+
+body {
+    background-color: #fafeff!important;
+}
+@media (min-width: 991.98px) {
+    main {
+        padding-left: 240px;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 310px;
+    z-index: 600;
+    margin-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+.sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.commoncard{
+
+    height: 520px!important;
+
+}
+
+li{
+
+    list-style-type:none;
+}
+.owl-slider1 button.owl-next{
+    background-color: tomato!important;
+    color: rgb(255, 255, 255)!important;
+    width: 90px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.owl-slider1 button.owl-prev{
+    background-color: tomato!important;
+    color: rgb(255, 255, 255)!important;
+    width: 90px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+.owl-slider2 .owl-item{
+    margin-bottom: 20px;
+    position: relative;
+    transform: scale(0.9);
+    opacity: 1;
+    transition: all 0.3s;
+    border-radius: 5px;
+    box-shadow: 0 15px 45px -20px rgba(red, green, blue, alpha);
+}
+/* .owl-slider2 .owl-item.active.center{
+    transform: scale(1.15);
+    opacity: 1;
+} */
+
+
+.owl-slider2 button.owl-next{
+    background-color: rgb(0, 179, 255)!important;
+    color: rgb(0, 0, 0)!important;
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    top: 30%;
+    left: 5px;
+}
+.owl-slider2 button.owl-prev{
+    background-color: rgb(0, 179, 255)!important;
+    color: rgb(0, 0, 0)!important;
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    top: 30%;
+    right: 5px;
+}
+.card-img{
+    width: 100%!important;
+    height: 160px!important;
+
+}
+
+.owl-nav { display: block !important; }
+.owl-dots { display: block !important; }
+
+.discount{
+    position: absolute;
+    right: 10px;
+    background-color: #ff0026;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: whitesmoke;
+}
+.discount:hover{
+
+    background-color: #ff0026;
+
+    color: whitesmoke;
+}
+
+
+
+
+@media (min-width: 1050px) {
+
+    .medicine-search{
+
+        min-width: 100%!important;
+    }
+}
+
+@media (min-width: 1147px) {
+
+    .medicine-search{
+
+        min-width: 140%!important;
+    }
+}
+
+
+@media (min-width: 1188px) {
+
+    .medicine-search{
+
+        min-width: 170%!important;
+    }
+}
+
+@media (min-width: 1274px) {
+
+    .medicine-search{
+
+        min-width: 180%!important;
+    }
+}
+
+@media (min-width: 1474px) {
+
+    .medicine-search{
+
+        min-width: 240%!important;
+    }
+}
+
+@media (min-width: 1731px) {
+
+    .medicine-search{
+
+        min-width: 280%!important;
+    }
+}
+
+
+
+
+@media (min-width: 2331px) {
+
+    .medicine-search{
+
+        min-width: 540%!important;
+    }
+}
+@media (min-width: 1831px) {
+
+    .medicine-search{
+
+        min-width: 340%!important;
+    }
+}
+
+
+
+
+
