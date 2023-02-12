@@ -52,16 +52,16 @@
 
  {{-- jQuery CDN --}}
  <script src="{{asset('js/jquery.min.js')}}"></script>
-
+<script src="{{asset('js/axios.min.js')}}"></script>
  {{-- Material Design Bootstrap CDN --}}
 <script src="{{asset('js/mdb.min.js')}}"></script>
 
  {{-- owl carousel slider js --}}
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 
-<script src="{{asset('js/custom.js')}}"></script>
 
-@yield('script')
+<script src="{{asset('js/custom.js')}}"></script>
+@stack("script1")
 
 
 </body>

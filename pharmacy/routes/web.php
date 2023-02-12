@@ -21,4 +21,5 @@ use App\Http\Controllers\Frontend\HomeController;
 
 
 Route::get('/',[HomeController::class,'Home']);
-Route::get('/MedicineDetails/{MedicineName}/{Category}',[CategoryController::class,'MedicineDetails']);
+Route::get('/getmedicineDetails',[CategoryController::class,'getMedicineDetails']);
+Route::post('/MedicineDetails',[CategoryController::class,'MedicineDetails']);

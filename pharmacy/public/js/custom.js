@@ -55,9 +55,6 @@ $('.owl-slider2').owlCarousel({
     },
 
 })
-// $('.medicine_card').click(function (){
-//
-//    const medicineName =  $(this).data(name);
-//
-//     alert(medicineName);
-// })
+
+///Medicine Details
+

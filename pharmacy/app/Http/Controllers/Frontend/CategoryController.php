@@ -10,7 +10,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function MedicineDetails($MedicineName, $Category){
+    public function getMedicineDetails(){
+
+        return view('frontend.medicineDetails');
+
+    }
+    public function MedicineDetails(Request $req){
+
+        $MedicineName =  $req->input('medicineName');
+        $Category = $req->input('categoryName');
 
       // dd($MedicineName);
 
