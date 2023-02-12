@@ -12,7 +12,7 @@
 
                 <img src="{{ asset($common_medicine['medicine_img']) }}" class="img-fluid " />
 
-              <a class="medicine_card" data-mname="{{ $common_medicine['medicine_name']}}" data-cname="{{$common_medicine['category_name'] }}">
+              <a class="medicine_card" href="/getmedicineDetails/{{ $common_medicine['medicine_name']}}/{{$common_medicine['category_name'] }}">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
               </a>
             </div>

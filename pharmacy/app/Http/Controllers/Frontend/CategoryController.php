@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function getMedicineDetails(){
+    public function getMedicineDetails($mname,$cname){
 
-        return view('frontend.medicineDetails');
+        return view('frontend.medicineDetails',compact('mname','cname'));
 
     }
     public function MedicineDetails(Request $req){

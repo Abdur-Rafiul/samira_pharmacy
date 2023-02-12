@@ -16,7 +16,8 @@
 
 
                     <div class="row">
-                        <h4 id="h4">Medicine Name</h4>
+                        <h4 id="h4" class="medicineName">{{$mname}}</h4>
+                        <h4 id="h4" class="categoryName">{{$cname}}</h4>
                         <div class="col-md-6">Conform order</div>
                         <div class="col-md-6">Add to Cart</div>
                     </div>
@@ -39,13 +40,14 @@
     </header>
 @endsection
 
+
 @push('script1')
     <script type="text/javascript">
 
-        $('.medicine_card').click(function (){
 
-            const medicineName =  $(this).data('mname');
-            const categoryName =  $(this).data('cname');
+
+            const medicineName =  $('.medicineName').html();
+            const categoryName =  $('.categoryName').html();
 
             //alert(medicineName + categoryName);
 
@@ -61,10 +63,10 @@
 
                         const jsonData = response.data;
 
+                        $("#medicine-img").attr("src",jsonData[1][0].medicine_img);
 
-                        $('#medicine-img').src = jsonData[1][0].medicine_img;
-                        $("h4").html(jsonData[1][0].medicine_name);
-                        console.log((jsonData[1][0].medicine_img).toString());
+
+
 
                     }else{
 
@@ -73,14 +75,13 @@
 
 
 
-                    window.location = '/getmedicineDetails';
+
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
                 })
-        })
+
     </script>
 @endpush
-
 
