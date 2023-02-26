@@ -191,7 +191,23 @@ li{
     color: whitesmoke;
 }
 
+#theImg{
+    position: relative;
+    bottom:33%;
+    right: 3%;
+}
+.medicine_des{
+    background-color: #f0f7f7;
+    height: 100%!important;
+    width: 40%!important;
+    margin-left: 20px!important;
 
+
+}
+
+.medicine_div{
+
+}
 
 
 @media (min-width: 1050px) {

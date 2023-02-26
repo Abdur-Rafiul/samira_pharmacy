@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     }
     public function MedicineDetails(Request $req){
-
+        //dd($req->all());
         $MedicineName =  $req->input('medicineName');
         $Category = $req->input('categoryName');
 
