@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('medicine_details', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->string('medicine_name');
+
+            $table->string('img1');
+            $table->string('img2');
+            $table->string('img3');
+
             $table->string('medicine_des');
             $table->string('pharmacy_name');
 

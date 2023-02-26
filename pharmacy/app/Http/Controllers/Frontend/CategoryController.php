@@ -20,22 +20,24 @@ class CategoryController extends Controller
         $MedicineName =  $req->input('medicineName');
         $Category = $req->input('categoryName');
 
-      // dd($MedicineName);
+
+
+
+
 
         //$medicineName= medicineDetailsModel::where('medicine_name','=',$MedicineName)->pluck('medicine_name');
         $medicine= medicineDetailsModel::where('medicine_name','=',$MedicineName)->first();
 
         if($Category === 'Common Medicine'){
 
-            $medicineImg= commonMedicineModel::where('category_name','=',$Category)->get();
+            $medicineDetails = medicineDetailsModel::leftJoin('common_medicine_table', function($join) {
+                $join->on('medicine_details.medicine_name', '=', 'common_medicine_table.medicine_name');
+            }) ->where('medicine_details.medicine_name', '=', $MedicineName)->first();
 
-            $array[] = json_decode($medicine, true);
-            $array[] = json_decode($medicineImg, true);
-            $medicineDetails = json_encode($array, JSON_PRETTY_PRINT);
 
-            //dd($medicineImg);
 
             if($medicineDetails){
+             // dd($medicineDetails);
 
                 return $medicineDetails;
             }else{

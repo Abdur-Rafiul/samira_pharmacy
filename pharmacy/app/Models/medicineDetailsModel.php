@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class medicineDetailsModel extends Model
 {
@@ -13,4 +14,10 @@ class medicineDetailsModel extends Model
     public $incrementing=true;
     public $keyType='int';
     public  $timestamps=false;
+
+    public function CommonMedicine(): BelongsTo
+    {
+
+        return $this->belongsTo(commonMedicineModel::class);
+    }
 }

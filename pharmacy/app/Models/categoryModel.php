@@ -13,5 +13,9 @@ class categoryModel extends Model
     public $incrementing=true;
     public $keyType='int';
     public  $timestamps=false;
+
+
+
 }
+
 

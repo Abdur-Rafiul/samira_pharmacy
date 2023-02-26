@@ -2,18 +2,30 @@
 
 
 @section('content')
-    <header class="mt-5 ml-5 medicine_div">
+    <header class="mt-5 ml-5 medicine_div" style="background-image: url('{{ asset('photo/button_rainbow.png')}}');">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
 <div class="row mt-5 ml-5">
 
-    <div class="col-md-6 mt-5" id="theDivimg">
+
+    <div class="col-lg-2 col-md-2">
+
+
+     <span class="img1"></span><br>
+     <span class="img2"></span><br>
+     <span class="img3"></span><br>
 
 
 
     </div>
-    <div class="col-md-6 medicine_des">
+    <div class="col-md-4 col-md-4 mt-5" id="theDivimg">
+
+
+
+    </div>
+
+    <div class="col-md-6 col-md-6 medicine_des">
 
 
 
@@ -38,8 +50,9 @@
     </div>
 
 </div>
-                <span>
-</span>
+
+
+
             </div>
 
 
@@ -48,6 +61,21 @@
         </nav>
         <!-- Navbar -->
 
+        <div class="delivery">
+            <h5 class="mt-3"><i class="fas fa-bicycle fa-2x text-danger"></i> সারা বাংলাদেশ থেকে অর্ডার করা যাবে।</h5>
+            <h6><i class="fas fa-notes-medical"></i><span  class="pharmacy_name" style="color: #000000"></span></h6>
+        </div>
+
+          <div style="color: #000000" class="description1">
+              <h5 class="mt-3">Drescription</h5>
+              <div class="description">
+
+              </div>
+
+
+
+          </div>
+          </div>
 
     </header>
 @endsection
@@ -56,6 +84,28 @@
 @push('script1')
     <script type="text/javascript">
 
+            $('.img1').click(function (){
+
+                let img1 = $('.theImg1').attr('src');
+
+                $('#theImg').attr('src',img1);
+
+            });
+
+            $('.img2').click(function (){
+
+                let img2 = $('.theImg2').attr('src');
+
+                $('#theImg').attr('src',img2);
+
+            })
+            $('.img3').click(function (){
+
+                let img3 = $('.theImg3').attr('src');
+
+                $('#theImg').attr('src',img3);
+
+            })
 
 
             const medicineName =  $('.medicineName').html();
@@ -75,19 +125,38 @@
 
                         var jsonData = response.data;
 
+                        console.log(jsonData.pharmacy_name);
+
                         //$("#medicine-img").attr("src",jsonData[1][0].medicine_img);
-                        //console.log(response.data);
-                        let img_one = jsonData[1][0].medicine_img;
+                        let img_one = jsonData.medicine_img;
+
+                        let img1 = jsonData.img1;
+                        let img2 = jsonData.img2;
+                        let img3 = jsonData.img3;
+
+                        //Maybe Delete port number when c panel
                         var source = window.location.protocol+"//"+window.location.hostname+':'+8000+'/'+img_one;
 
+
+                        var source1 = window.location.protocol+"//"+window.location.hostname+':'+8000+'/'+img1;
+                        var source2 = window.location.protocol+"//"+window.location.hostname+':'+8000+'/'+img2;
+                        var source3 = window.location.protocol+"//"+window.location.hostname+':'+8000+'/'+img3;
+
                         //console.log(source)
-                        $('#theDivimg').prepend($('<img>',{id:'theImg',class:'w-100 img_one',src: source}));
+                        $('#theDivimg').prepend($('<img>',{id:'theImg',class:'w-100',src: source}));
 
-                        $('.medicine_special_price').html('Special Price '+jsonData[1][0].medicine_special_price+' TK');
+                        $('.img1').prepend($('<img>',{id:'theImg1',class:'w-100 img_one theImg1',src: source1}));
+                        $('.img2').prepend($('<img>',{id:'theImg2',class:'w-100 img_one theImg2',src: source2}));
+                        $('.img3').prepend($('<img>',{id:'theImg3',class:'w-100 img_one theImg3',src: source3}));
 
 
-                        $('.discount1').html('Get '+jsonData[1][0].medicine_discount+' % off');
-                        $('.medicine_price').html(+jsonData[1][0].medicine_price);
+                        $('.medicine_special_price').html('Special Price '+jsonData.medicine_special_price+' TK');
+
+
+                        $('.discount1').html('Get '+jsonData.medicine_discount+' % off');
+                        $('.medicine_price').html(+jsonData.medicine_price);
+                        $('.pharmacy_name').html(jsonData.pharmacy_name);
+                        $('.description').html(jsonData.medicine_des);
                     }else{
 
 

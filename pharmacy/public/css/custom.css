@@ -195,11 +195,14 @@ li{
     position: relative;
     bottom:33%;
     right: 3%;
+
+    width: 200px;
+    height: 350px;
 }
 .medicine_des{
     background-color: #f0f7f7;
     height: 100%!important;
-    width: 40%!important;
+    width: 45%!important;
     margin-left: 20px!important;
 
 
@@ -207,7 +210,25 @@ li{
 
 .medicine_div{
 
+    /*background-image: url("{{asset('photo/button_rainbow.png')}}");*/
+    /*background-image: url('{{asset('images/bg.jpg')}}');*/
 }
+
+.img_one{
+
+    height: 30%!important;
+    width: 100%!important;
+
+
+}
+
+.img_one:hover {
+    box-shadow: 3px 3px 10px #003bff;
+}
+
+/*.img1{*/
+/*    background: #0a4e25;*/
+/*}*/
 
 
 @media (min-width: 1050px) {

@@ -13,5 +13,10 @@ class commonMedicineModel extends Model
     public $incrementing=true;
     public $keyType='int';
     public  $timestamps=false;
+
+
+    public function MedicineDetails(){
+        return $this->hasOne(medicineDetailsModel::class);
+    }
 }
 
