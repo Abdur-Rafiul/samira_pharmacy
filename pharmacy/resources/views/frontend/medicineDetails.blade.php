@@ -60,8 +60,8 @@
 
                         <h6 class="text-danger">**Do not buy any medicine without doctor's advice</h6>
 
-                        <button class="col-md-6 btn-danger bg-danger text-white">Conform order</button>
-                        <button class="col-md-6 btn-danger bg-danger text-white">Add to Cart</button>
+                        <button class="col-md-6 btn-danger bg-danger text-white add-to-order">Conform order</button>
+                        <button   class="col-md-6 btn-danger bg-danger text-white add-to-cart ">Add to Cart</button>
                     </div>
 
 

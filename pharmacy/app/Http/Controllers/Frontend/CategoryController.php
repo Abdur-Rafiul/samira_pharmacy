@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AddToCartModel;
 use App\Models\babyModel;
 use App\Models\categoryModel;
 use App\Models\commonMedicineModel;
@@ -16,6 +17,8 @@ use App\Models\SexualModel;
 use App\Models\SupplementModel;
 use App\Models\WomenModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -37,7 +40,7 @@ class CategoryController extends Controller
         //$medicineName= medicineDetailsModel::where('medicine_name','=',$MedicineName)->pluck('medicine_name');
         $medicine= medicineDetailsModel::where('medicine_name','=',$MedicineName)->first();
 
-        if($Category === 'Common Medicine'){
+
 
             $medicineDetails = medicineDetailsModel::leftJoin('common_medicine_table', function($join) {
                 $join->on('medicine_details.medicine_name', '=', 'common_medicine_table.medicine_name');
@@ -54,7 +57,7 @@ class CategoryController extends Controller
                 return 0;
             }
 
-        }
+
 
 
 
@@ -107,5 +110,36 @@ class CategoryController extends Controller
       // dd($categoryMedicineDetails);
 
         return view('frontend.categorymedicinedetails',compact('medicine'));
+    }
+
+    public function AddToCart(Request $req){
+
+          $mname = $req->input('mname');
+          $cname = $req->input('cname');
+          $img = $req->input('img');
+          $price = $req->input('price');
+          $pharmacy = $req->input('pharmacy');
+
+          $medicine = new AddToCartModel();
+          $medicine->category_name = $cname;
+          $medicine->medicine_name = $mname;
+          $medicine->medicine_img = $img;
+          $medicine->medicine_special_price = $price;
+          $medicine->medicine_price = 0;
+          $medicine->medicine_discount = 0;
+          $medicine->pharmacy = $pharmacy;
+          $medicine->email = Auth::user()->email;
+
+          $medicine->save();
+
+          //dd($req->all());
+        $count = AddToCartModel::count();
+        if($count){
+            return $count;
+
+        }else{
+
+            return 0;
+        }
     }
 }

@@ -66,7 +66,7 @@
 
                         @auth
                             <li>
-                            <a href="{{ url('/dashboard') }}" class="dropdown-item">Profile</a>
+                            <a href="{{ url('/dashboard-profile') }}" class="dropdown-item">Profile</a>
                             </li>
                         @else
                             <li>

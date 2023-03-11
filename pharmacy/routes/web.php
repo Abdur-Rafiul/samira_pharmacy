@@ -20,12 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'Home']);
 Route::get('/category',[HomeController::class,'Category']);
+Route::get('/count',[HomeController::class,'Count']);
 
 
 Route::get('/categorymedicinedetails/{category_name}',[CategoryController::class,'CategoryMedicineDetails']);
 
 Route::get('/getmedicineDetails/{mname}/{cname}',[CategoryController::class,'getMedicineDetails']);
 Route::post('/MedicineDetails',[CategoryController::class,'MedicineDetails']);
+
+Route::post('/add-to-cart',[CategoryController::class,'AddToCart']);
 
 
 
@@ -34,10 +37,9 @@ Route::post('/MedicineDetails',[CategoryController::class,'MedicineDetails']);
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+Route::get('/dashboard-profile',[HomeController::class,'DashBoardProfile'])->middleware(['auth', 'verified'])->name('dashboard-profile');;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

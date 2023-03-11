@@ -1,3 +1,42 @@
+
+
+
+
+$('.add-to-cart').click(function(){
+
+    $('.add-to-cart').attr( "disabled", "disabled" )
+
+    const img = $('#theImg').attr('src');
+    const mname = $('.medicineName').html();
+    const cname = $('.categoryName').html();
+    const price = $('.medicine_special_price').html();
+    const pharmacy = $('.pharmacy_name').html();
+
+  //  alert(pharmacy);
+axios.post('/add-to-cart', {
+
+    mname : mname,
+    cname : cname,
+    img : img,
+    price : price,
+    pharmacy: pharmacy
+
+})
+    .then(function (response) {
+        const data = response.data;
+
+       // alert(data)
+
+        window.location = '/';
+
+
+
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+})
+
 $('.owl-slider1').owlCarousel({
     loop:true,
     margin:10,
