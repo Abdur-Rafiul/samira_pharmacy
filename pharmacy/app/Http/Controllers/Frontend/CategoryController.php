@@ -3,9 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\babyModel;
 use App\Models\categoryModel;
 use App\Models\commonMedicineModel;
+use App\Models\CovidModel;
+use App\Models\DeviceModel;
+use App\Models\HerbalModel;
+use App\Models\ManModel;
 use App\Models\medicineDetailsModel;
+use App\Models\PersonalModel;
+use App\Models\SexualModel;
+use App\Models\SupplementModel;
+use App\Models\WomenModel;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -50,5 +59,53 @@ class CategoryController extends Controller
 
 
         //return view('frontend.medicineDetails',compact('medicineDetails'));
+    }
+
+    public function CategoryMedicineDetails($category_name){
+
+        if($category_name == 'Common Medicine')
+        {
+            $medicine = commonMedicineModel::get();
+        }
+        elseif ($category_name == 'Baby & Mom Care')
+        {
+            $medicine = babyModel::get();
+        }
+        elseif ($category_name == 'Man Care')
+        {
+            $medicine = ManModel::get();
+        }
+        elseif($category_name == 'Women Care')
+        {
+            $medicine = WomenModel::get();
+        }
+        elseif($category_name == 'Sexual Wellness')
+        {
+            $medicine = SexualModel::get();
+        }
+        elseif($category_name == 'Supplements & Vitamins')
+        {
+            $medicine = SupplementModel::get();
+        }
+        elseif($category_name == 'Personal Care')
+        {
+            $medicine = PersonalModel::get();
+        }
+        elseif($category_name == 'Device')
+        {
+            $medicine = DeviceModel::get();
+        }
+        elseif($category_name == 'Herbal & Homeopathy')
+        {
+            $medicine = HerbalModel::get();
+        }
+        elseif($category_name == 'Covid-19 Special')
+        {
+            $medicine = CovidModel::get();
+        }
+
+      // dd($categoryMedicineDetails);
+
+        return view('frontend.categorymedicinedetails',compact('medicine'));
     }
 }

@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('img2');
             $table->string('img3');
 
+            $table->string('medicine_pis');
+            $table->string('medicine_box');
+
             $table->string('medicine_des');
             $table->string('pharmacy_name');
 

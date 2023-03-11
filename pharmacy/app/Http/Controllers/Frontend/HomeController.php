@@ -15,4 +15,12 @@ class HomeController extends Controller
 
         return view('frontend.index',compact('category','common_medicine'));
     }
+
+   public function Category(){
+       $category = categoryModel::all();
+
+       //dd($category) ;
+
+       return $category;
+   }
 }
