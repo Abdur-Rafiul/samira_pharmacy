@@ -12,6 +12,8 @@ use App\Models\DeviceModel;
 use App\Models\HerbalModel;
 use App\Models\ManModel;
 use App\Models\medicineDetailsModel;
+use App\Models\MedicineModel;
+use App\Models\MedicineOrderModel;
 use App\Models\PersonalModel;
 use App\Models\SexualModel;
 use App\Models\SupplementModel;
@@ -66,46 +68,9 @@ class CategoryController extends Controller
 
     public function CategoryMedicineDetails($category_name){
 
-        if($category_name == 'Common Medicine')
-        {
-            $medicine = commonMedicineModel::get();
-        }
-        elseif ($category_name == 'Baby & Mom Care')
-        {
-            $medicine = babyModel::get();
-        }
-        elseif ($category_name == 'Man Care')
-        {
-            $medicine = ManModel::get();
-        }
-        elseif($category_name == 'Women Care')
-        {
-            $medicine = WomenModel::get();
-        }
-        elseif($category_name == 'Sexual Wellness')
-        {
-            $medicine = SexualModel::get();
-        }
-        elseif($category_name == 'Supplements & Vitamins')
-        {
-            $medicine = SupplementModel::get();
-        }
-        elseif($category_name == 'Personal Care')
-        {
-            $medicine = PersonalModel::get();
-        }
-        elseif($category_name == 'Device')
-        {
-            $medicine = DeviceModel::get();
-        }
-        elseif($category_name == 'Herbal & Homeopathy')
-        {
-            $medicine = HerbalModel::get();
-        }
-        elseif($category_name == 'Covid-19 Special')
-        {
-            $medicine = CovidModel::get();
-        }
+
+            $medicine = MedicineModel::get();
+
 
       // dd($categoryMedicineDetails);
 
@@ -136,6 +101,51 @@ class CategoryController extends Controller
         $count = AddToCartModel::count();
         if($count){
             return $count;
+
+        }else{
+
+            return 0;
+        }
+    }
+
+
+
+    public function AddToOrder(Request $req){
+
+        $mname = $req->input('mname');
+        $cname = $req->input('cname');
+        $img = $req->input('img');
+        $price = $req->input('price');
+        $pharmacy = $req->input('pharmacy');
+        $status = $req->input('status');
+        $address = $req->input('address');
+
+        $delivery_email = $req->input('delivery_email');
+        $phone = $req->input('phone');
+        $fname = $req->input('fname');
+
+        $medicine = new MedicineOrderModel();
+        $medicine->category_name = $cname;
+        $medicine->medicine_name = $mname;
+        $medicine->medicine_img = $img;
+        $medicine->medicine_special_price = $price;
+        $medicine->medicine_price = 0;
+        $medicine->medicine_discount = 0;
+        $medicine->pharmacy = $pharmacy;
+        $medicine->email = Auth::user()->email;
+
+        $medicine->delivery_email = $delivery_email;
+        $medicine->phone = $phone;
+        $medicine->fname = $fname;
+        $medicine->address = $address;
+        $medicine->status = $status;
+
+        $medicine->save();
+
+
+       // dd($medicine);
+        if($medicine){
+            return 1;
 
         }else{
 

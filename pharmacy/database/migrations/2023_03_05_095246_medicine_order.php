@@ -22,6 +22,11 @@ return new class extends Migration
             $table->string('medicine_special_price');
             $table->string('medicine_discount');
             $table->string('email');
+            $table->string('delivery_email');
+            $table->string('phone');
+            $table->string('fname');
+            $table->string('pharmacy');
+            $table->string('address');
             $table->string('status');
 
 

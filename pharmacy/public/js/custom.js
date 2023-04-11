@@ -4,7 +4,6 @@
 
 $('.add-to-cart').click(function(){
 
-    $('.add-to-cart').attr( "disabled", "disabled" )
 
     const img = $('#theImg').attr('src');
     const mname = $('.medicineName').html();
@@ -12,7 +11,7 @@ $('.add-to-cart').click(function(){
     const price = $('.medicine_special_price').html();
     const pharmacy = $('.pharmacy_name').html();
 
-  //  alert(pharmacy);
+
 axios.post('/add-to-cart', {
 
     mname : mname,
@@ -25,14 +24,18 @@ axios.post('/add-to-cart', {
     .then(function (response) {
         const data = response.data;
 
-       // alert(data)
-
+         if(data > 0){
+             alert('Successfully Add To Cart')
+         }else{
+             alert('Failed Add To Cart')
+         }
         window.location = '/';
 
 
 
     })
     .catch(function (error) {
+        alert('Failed Add To Cart')
         console.log(error);
     });
 })

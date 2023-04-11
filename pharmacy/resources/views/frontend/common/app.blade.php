@@ -25,7 +25,7 @@
 
 </head>
 
-<body>
+<body    style="background-image: url('{{ asset('/photo/body-bg.jpg')}}');">
 
 
 
@@ -80,7 +80,7 @@
 
                                 @auth
 
-                                    <span> {{ Auth::user()->name }}</span>
+                                    <h3> {{ Auth::user()->name }}</h3>
 
                                 @else
 
@@ -128,7 +128,7 @@
                     <!-- Icon -->
                     <li class="nav-item">
                         <a class="nav-link me-3 me-lg-0" href="#">
-                            <img class="cart-logo" src="{{asset('/photo')}}/cart.png" alt=""> <sup style="font-size: 20px" class="count text-danger"></sup>
+{{--                            <img class="cart-logo" src="{{asset('/photo')}}/cart.png" alt=""> <sup style="font-size: 20px" class="count text-danger"></sup>--}}
                         </a>
                     </li>
 
@@ -154,11 +154,11 @@
     <div class="row">
       <div class="col-md-2">
 
-          <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white navbar-control">
+          <nav  id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white navbar-control">
               <div class="position-sticky">
                   <div class="list-group list-group-flush mx-3 mt-4">
                       <div class="category_one">
-                          <div class="category">
+                          <div class="category"  style="background-image: url('{{ asset('/photo/body-bg.jpg')}}');">
 
                           </div>
                       </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\paymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::get('/getmedicineDetails/{mname}/{cname}',[CategoryController::class,'get
 Route::post('/MedicineDetails',[CategoryController::class,'MedicineDetails']);
 
 Route::post('/add-to-cart',[CategoryController::class,'AddToCart']);
+Route::post('/add-to-order',[CategoryController::class,'AddToOrder']);
 
 
 
@@ -38,6 +40,24 @@ Route::post('/add-to-cart',[CategoryController::class,'AddToCart']);
 //    return view('welcome');
 //});
 Route::get('/dashboard-profile',[HomeController::class,'DashBoardProfile'])->middleware(['auth', 'verified'])->name('dashboard-profile');;
+
+
+
+
+
+
+
+
+Route::post('/payment',[paymentController::class,'index']);
+Route::post('/success',[paymentController::class,'success'])->name('success');
+Route::post('/fail',[paymentController::class,'fail'])->name('fail');
+
+
+
+
+
+
+
 
 
 

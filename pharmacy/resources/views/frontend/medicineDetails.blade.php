@@ -98,6 +98,67 @@
 
 
     </header>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form name="payment" id="payment" method="post" action="{{url('/payment')}}">
+                @csrf
+            <div class="modal-content">
+
+
+
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+
+
+
+                        <div class="col-md-12">
+
+
+                            <img class="w-25" id="imgLocation" src="" alt="">
+                            <h6  id="h6" class="medicineName mt-2">{{$mname}}</h6>
+                            <h6 id="hh6" class="categoryName d-none">{{$cname}}</h6>
+
+                            <b><h6 id="h6" class="medicine_special_price"></h6></b><p class="text-danger">Cash On delivery Outside Dhaka 150 tk and within Dhaka 80 tk</p>
+
+
+
+                        </div>
+
+                       <input class="d-none" name="mname" type="text" value="{{$mname}}">
+                       <input class="d-none" name="cname" type="text" value="{{$cname}}">
+                       <input class="pharmacy_name1 d-none" name="pharmacy" type="text" value="">
+                       <input class="d-none" id="imgrobin" name="img" type="text" value="">
+                       <input class="medicine_special_price1 d-none"  name="price" type="text" value="">
+
+                        <label class="form-check-label text-primary" for="inlineRadio1">Name</label>
+                      <input name="fname" class="fname" type="text" placeholder="Please Enter Your Full Name">
+                        <label class="form-check-label text-primary" for="inlineRadio1">Email</label>
+                      <input readonly name="email" class="email"  type="text" value="{{Auth::user()->email}}" placeholder="Enter Your Email">
+                        <label class="form-check-label text-primary" for="inlineRadio1">Phone </label>
+                      <input name="phone" class="phone" type="text" placeholder="Please Enter Your Phone Number">
+                        <label class="form-check-label text-primary" for="inlineRadio1">Address : </label>
+                     <textarea name="address" class="address"></textarea>
+                    </div>
+
+                </div>
+
+
+                <Button type="button" class="btn btn-primary cash-on-delivery">Cash On Delivery</Button>
+                <Button type="submit" class="btn btn-danger online-payment">Online Payment</Button>
+            </div>
+
+            </form>
+        </div>
+    </div>
 @endsection
 
 
@@ -128,6 +189,7 @@
             let price1 = price / box_count;
 
             $('.medicine_special_price').html('Special Price '+pis * price1+' TK');
+            $('.medicine_special_price1').val(pis * price1);
 
         });
 
@@ -286,8 +348,10 @@
 
 
                         $('.medicine_special_price').html('Special Price '+price+' TK');
+                        $('.medicine_special_price1').val(price);
 
                         $('.pharmacy_name').html(jsonData.pharmacy_name);
+                        $('.pharmacy_name1').val(jsonData.pharmacy_name);
                         $('.description').html(jsonData.medicine_des);
                         $('.box_count').html(jsonData.box_count);
                     }else{
@@ -305,6 +369,122 @@
                 })
 
 
+
+        $('.add-to-order').click(function (){
+            const img = $('#theImg').attr('src');
+            $("#imgLocation").attr("src", img);
+            $("#imgrobin").val(img);
+            $('.modal').modal('show');
+        })
+
+        $('.cash-on-delivery').click(function (){
+
+            const address = $('.address').val();
+            const img = $('#theImg').attr('src');
+            const mname = $('.medicineName').html();
+            const cname = $('.categoryName').html();
+            const price = $('.medicine_special_price').html();
+            const pharmacy = $('.pharmacy_name').html();
+
+            const fname = $('.fname').val();
+            const phone = $('.phone').val();
+            const delivery_email = $('.email').val();
+
+            //  alert(pharmacy);
+            axios.post('/add-to-order', {
+
+                mname : mname,
+                cname : cname,
+                img : img,
+                price : price,
+                pharmacy: pharmacy,
+                address: address,
+                status: '1',
+                fname : fname,
+                phone : phone,
+                delivery_email : delivery_email
+
+            })
+                .then(function (response) {
+                    const data = response.data;
+
+                     console.log(data)
+
+                    if(data == 1){
+                        alert("Order Successful")
+                        $('.modal').modal('hide');
+                    }else {
+                        alert("Order Failed")
+                        $('.modal').modal('hide');
+                    }
+
+
+
+
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    $('.modal').modal('hide');
+                });
+
+           // $('.modal').modal('hide');
+        })
+
+
+
+
+
+
+
+
+
+        // $('.online-payment').click(function (){
+        //
+        //     const address = $('.address').val();
+        //     const img = $('#theImg').attr('src');
+        //     const mname = $('.medicineName').html();
+        //     const cname = $('.categoryName').html();
+        //     const price = $('.medicine_special_price').html();
+        //     const pharmacy = $('.pharmacy_name').html();
+        //
+        //     const fname = $('.fname').val();
+        //     const phone = $('.phone').val();
+        //     const delivery_email = $('.email').val();
+        //
+        //     //  alert(pharmacy);
+        //     axios.post('/payment', {
+        //
+        //         mname : mname,
+        //         cname : cname,
+        //         img : img,
+        //         price : price,
+        //         pharmacy: pharmacy,
+        //         address: address,
+        //         status: '2',
+        //         fname : fname,
+        //         phone : phone,
+        //         delivery_email : delivery_email
+        //
+        //     })
+        //         .then(function (response) {
+        //             // window.location = '/payment/'+address+'/'+img+'/'+mname+'/'+cname+'/'+price+'/'+pharmacy+'/'+fname+'/'+phone+'/'+delivery_email
+        //
+        //             window.location = '/payment';
+        //
+        //
+        //
+        //
+        //
+        //
+        //         })
+        //         .catch(function (error) {
+        //             console.log(error);
+        //             $('.modal').modal('hide');
+        //         });
+        //
+        //     // $('.modal').modal('hide');
+        // })
 
     </script>
 @endsection
